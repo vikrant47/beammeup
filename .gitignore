@@ -1,0 +1,11 @@
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# ide files
+.idea
+
+# dependencies
+/node_modules

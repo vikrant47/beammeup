@@ -1,0 +1,27 @@
+{
+  "name": "beammeup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "bin": {
+    "beammeup": "./dist/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "source-map-support": "^0.5.20",
+    "ts-node": "^10.3.0",
+    "tslint": "^6.1.3",
+    "typescript": "^4.4.3",
+    "@types/node": "^16.11.6"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "dotenv": "^10.0.0",
+    "yargs": "^17.2.1"
+  }
+}
