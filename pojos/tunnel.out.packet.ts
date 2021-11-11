@@ -1,4 +1,11 @@
+export enum OutPacketType {
+    HttpResponse = 'HttpResponse',
+    ConnectionPacket = 'ConnectionPacket',
+}
+
 export interface TunnelOutPacket {
+    id: string,
+    type: OutPacketType,
     meta?: TunnelMeta;
     httpData?: TunnelHttpData;
     createdAt: Date;
@@ -22,6 +29,6 @@ export interface TunnelHttpResponse {
 
 export interface TunnelHttpData {
     requestId: string;
-    tunnelAlias: string;
+    alias: string;
     response: TunnelHttpResponse;
 }

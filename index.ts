@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import {Tunnel} from "./services/tunnel";
 import {ALLOWED_PROTOCOLS, TunnelProtocol} from "./enums/TunnelProtocol";
+import axios from "axios";
 
 const yargs = require('yargs');
 const argv = yargs
@@ -43,7 +44,13 @@ const argv = yargs
     .help()
     .argv;
 
-const initTunnel = () => {
+const initTunnel = async () => {
+    let response = await axios.get('http://127.0.0.1:8887/Saved%20Pictures/3154.jpg')
+    const imageBody = Buffer.from(response.data, 'binary').toString('base64');
+    response = await axios.get('http://127.0.0.1:8887/Saved%20Pictures/New%20Text%20Document.txt');
+    const textBody = Buffer.from(response.data, 'binary').toString('base64');
+    // Buffer.from(textBody,'base64').toString('ascii') // for text
+    //  Buffer.from(textBody,'base64').toString('utf-8') // for text
     const protocol = <TunnelProtocol>(argv.protocol || TunnelProtocol.HTTP);
     if (ALLOWED_PROTOCOLS.indexOf(protocol) < 0) {
         throw new Error('Invalid protocol ' + protocol + ' only ' + ALLOWED_PROTOCOLS.join(',') + ' are allowed')
@@ -52,4 +59,5 @@ const initTunnel = () => {
     return tunnel.connect();
 }
 initTunnel();
+
 

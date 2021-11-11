@@ -1,8 +1,9 @@
 import {TunnelProtocol} from "../enums/TunnelProtocol";
 import * as net from "net";
 import EventEmitter from "events";
-import {TunnelMeta, TunnelOutPacket} from "../pojos/tunnel.out.packet";
+import {OutPacketType, TunnelMeta, TunnelOutPacket} from "../pojos/tunnel.out.packet";
 import {HttpRequestTunnel} from "./tunnels/http.request.tunnel";
+
 
 export class Tunnel extends EventEmitter {
     protected connection = new net.Socket();
@@ -47,6 +48,8 @@ export class Tunnel extends EventEmitter {
     onConnect() {
         this.emit('tunnel.socket.connect');
         this.sendPacket({
+            id: '',
+            type: OutPacketType.ConnectionPacket,
             alias: this.alias,
             meta: {
                 alias: this.alias,
@@ -85,7 +88,13 @@ export class Tunnel extends EventEmitter {
         this.emit('tunnel.socket.close');
     }
 
+    send(buffer: Uint8Array | string, cb?: (err?: Error) => void) {
+        this.connection.write(buffer);
+    }
+
     sendPacket(packet: TunnelOutPacket) {
-        this.connection.write(JSON.stringify(packet));
+        const serializedPacket = JSON.stringify(packet);
+        console.debug('Sending serialized packet ', serializedPacket);
+        this.connection.write(serializedPacket);
     }
 }
