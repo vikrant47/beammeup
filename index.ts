@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+require('dotenv').config();
 import {Tunnel} from "./services/tunnel";
 import {ALLOWED_PROTOCOLS, TunnelProtocol} from "./enums/TunnelProtocol";
 import axios from "axios";
