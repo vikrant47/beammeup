@@ -1,4 +1,4 @@
-# Beam Me UP
+# Beam Me UP (Not available yet)
 This is a utility similar to `ngrok` and `localtunnel`.
 It allows you to access your localhost http api's over the internet.
 
