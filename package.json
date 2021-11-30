@@ -7,7 +7,12 @@
     "beammeup": "./dist/index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node local.js",
+    "build": "tsc",
+    "clean": "rimraf dist",
+    "watch:build": "tsc --watch",
+    "watch:server": "nodemon './dist/index.js' --watch './dist'"
   },
   "keywords": [],
   "author": "",

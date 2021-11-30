@@ -27,7 +27,6 @@ export class Tunnel extends EventEmitter {
         this.connection.connect(parseInt(process.env.TUNNEL_PORT) || 8888, process.env.TUNNEL_HOST || 'localhost', () => {
             console.debug('Connected with server, creating tunnel ', this.alias, ' with protocol', this.protocol);
             this.onConnect();
-
         });
         this.connection.on('data', (data) => {
             console.log('Received: ' + data);
