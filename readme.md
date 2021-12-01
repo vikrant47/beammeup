@@ -3,7 +3,7 @@ This is a utility similar to `ngrok` and `localtunnel`.
 It allows you to access your localhost http api's over the internet.
 
 ## Quickstart
-####Install the npm package globally 
+#### Install the npm package globally 
 
 `npm i -g beammeup`
 
